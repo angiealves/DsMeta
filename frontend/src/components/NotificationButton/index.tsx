@@ -6,7 +6,7 @@ function NotificationButton() {
 
         <div className="dsmeta-sales-table-btn">
 
-            <img src="src/assets/notification-icon.svg" alt="Notificar" />
+            <img src="src/assets/img/notification-icon.svg" alt="Notificar" />
 
         </div>
 

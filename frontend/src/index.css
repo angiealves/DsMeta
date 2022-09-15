@@ -25,3 +25,14 @@ a, a:hover, a:visited {
     color: unset;
     text-decoration: none;
 }
+
+.dsmeta-card-container {
+    width: 100%;
+    min-width: 362px; /* Tamanho mínimo do meu container */
+    max-width: 900px; /* Tamanho máximo do meu container */
+    margin: 0 auto; /* Colocando dessa forma, faz com que meu div fique centralizado na tela. */
+}
+
+#sales {
+    padding: 40px 10px; /* Ordem: 1- Superior (40); 2- Laterais (10) */
+}

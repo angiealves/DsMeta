@@ -1,19 +1,31 @@
+import Header from "./components/Header";
 import NotificationButton from "./components/NotificationButton";
+import SalesCard from "./components/SalesCard";
 
 function App() {
 
   return (
 
     <> {/* O React não suporta 2 tags na mesma function, então tem que 
-          colocar um abrir e fechar simbólico */}
+          colocar um abrir e fechar simbólico, através do 'fragment' */}
 
-      <h1>Olá mundo!</h1>
+      <Header/>
 
-      <NotificationButton />
+      <main>
 
-      <NotificationButton />
+        <section id="sales">
 
-      <NotificationButton />
+            <div className="dsmeta-card-container">
+                {/* esta div vai delimitar o tamanho do meu card. Vou colocar
+                meus componentes aqui. */}
+
+                <SalesCard/>
+
+            </div>
+        
+        </section>
+
+      </main>
 
     </>
 
