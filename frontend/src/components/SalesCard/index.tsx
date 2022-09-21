@@ -4,6 +4,8 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { BASE_URL } from '../../utils/request';
+import { Sales } from '../models/sales';
 
 function SalesCard() {
 
@@ -13,14 +15,16 @@ function SalesCard() {
     const [minDate, setMinDate] = useState(min);
     const [maxDate, setMaxDate] = useState(max);
 
+    const [sales, setSales] = useState<Sales[]>([]);
+
     useEffect(() => {
 
-        axios.get("http://localhost:8081/sales").then(response => {
+        axios.get(`${BASE_URL}/sales`).then(response => {
 
-            console.log(response.data);
+            setSales(response.data.content);
 
-            }
-            
+        }
+
         )
 
     }, []);
@@ -94,83 +98,43 @@ function SalesCard() {
 
                     <tbody>
 
-                        <tr>
+                        {sales.map(sales => {
 
-                            <td className="dsmeta-show-992px">#001</td>
+                            return (
 
-                            <td className="dsmeta-show-576px">07/09/2022</td>
+                                <tr key={sales.id}>
 
-                            <td>Ana</td>
+                                    <td className="dsmeta-show-992px">{sales.id}</td>
 
-                            <td className="dsmeta-show-992px">10</td>
+                                    <td className="dsmeta-show-576px">{new Date(sales.date).toLocaleDateString()}</td>
 
-                            <td className="dsmeta-show-992px">20</td>
+                                    <td>{sales.sellerName}</td>
 
-                            <td>R$ 2.000,00</td>
+                                    <td className="dsmeta-show-992px">{sales.visited}</td>
 
-                            <td>
+                                    <td className="dsmeta-show-992px">{sales.deals}</td>
 
-                                <div className="dsmeta-sales-table-btn-container">
+                                    <td>R$ {sales.amount.toFixed(2)}</td>
 
-                                    <NotificationButton />
+                                    <td>
 
-                                </div>
+                                        <div className="dsmeta-sales-table-btn-container">
 
-                            </td>
+                                            <NotificationButton />
 
-                        </tr>
+                                        </div>
 
-                        <tr>
+                                    </td>
 
-                            <td className="dsmeta-show-992px">#002</td>
+                                </tr>
 
-                            <td className="dsmeta-show-576px">07/09/2022</td>
+                            )
 
-                            <td>Bia</td>
+                        }
 
-                            <td className="dsmeta-show-992px">20</td>
+                        )
 
-                            <td className="dsmeta-show-992px">30</td>
-
-                            <td>R$ 3.000,00</td>
-
-                            <td>
-
-                                <div className="dsmeta-sales-table-btn-container">
-
-                                    <NotificationButton />
-
-                                </div>
-
-                            </td>
-
-                        </tr>
-
-                        <tr>
-
-                            <td className="dsmeta-show-992px">#003</td>
-
-                            <td className="dsmeta-show-576px">07/09/2022</td>
-
-                            <td>Cleia</td>
-
-                            <td className="dsmeta-show-992px">100</td>
-
-                            <td className="dsmeta-show-992px">450</td>
-
-                            <td>R$ 45.000,00</td>
-
-                            <td>
-
-                                <div className="dsmeta-sales-table-btn-container">
-
-                                    <NotificationButton />
-
-                                </div>
-
-                            </td>
-
-                        </tr>
+                        }
 
                     </tbody>
 
