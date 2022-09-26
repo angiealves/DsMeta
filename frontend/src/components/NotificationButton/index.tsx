@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { toast } from 'react-toastify';
 import { BASE_URL } from '../../utils/request';
 import './styles.css'
 
@@ -14,7 +15,7 @@ function handleClick(id : number) {
 
         .then(response => {
 
-            console.log("Sucesso!!!");
+            toast.info("SMS enviado com sucesso ao vendedor!")
 
         }
     )
