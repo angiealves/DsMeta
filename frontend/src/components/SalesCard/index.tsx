@@ -123,7 +123,7 @@ function SalesCard() {
 
                                         <div className="dsmeta-sales-table-btn-container">
 
-                                            <NotificationButton />
+                                            <NotificationButton saleId={sales.id} />
 
                                         </div>
 
